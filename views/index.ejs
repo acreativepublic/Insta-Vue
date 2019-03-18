@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/scanstyle.css' />
+    <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+  <div id="app">
+          <div class="sidebar">
+            <section class="cameras">
+              <h2>Cameras</h2>
+              <ul>
+                <li v-if="cameras.length === 0" class="empty">No cameras found</li>
+                <li v-for="camera in cameras">
+                  <span v-if="camera.id == activeCameraId" :title="formatName(camera.name)" class="active">{{ formatName(camera.name) }}</span>
+                  <span v-if="camera.id != activeCameraId" :title="formatName(camera.name)">
+                    <a @click.stop="selectCamera(camera)">{{ formatName(camera.name) }}</a>
+                  </span>
+                </li>
+              </ul>
+            </section>
+            <section class="scans" onchange="frack()" >
+              <h2>Scans</h2>
+              <ul v-if="scans.length === 0">
+                <li class="empty">No scans yet</li>
+              </ul>
+              <transition-group name="scans" tag="ul">
+                <li v-for="scan in scans" id="codee" :key="scan.date" :title="scan.content">{{ scan.content }}</li>
+              </transition-group>
+              <div v-for="scan in scans">
+              <form method="POST" :key="scan.date" :title="scan.content" id="myform" action="products/create">
+
+                <input type="hidden"  name="qrcode" :value="scan.content"/>
+
+                <input type="hidden" id="cdate" name="date" value="datedowntowncode"/>
+              <button type="submit" class="btn" v-if="scans.length != 0">Redeem coupon?</button>
+
+              </form>
+
+            </div>
+
+
+            </section>
+          </div>
+          <div class="preview-container">
+            <video id="preview"></video>
+          </div>
+        </div>
+
+  </head>
+  <body>
+ </body>
+<script>
+
+var cdote = document.getElementById("cdate");
+var d = new Date();
+cdote.value = d;
+</script>
+ <script src="/bundled/visuals.js"></script>
+</html>
