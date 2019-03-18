@@ -18,7 +18,7 @@ var app = new Vue({
 var number=document.getElementById("myform");
     self.scanner.addListener('scan', function (content, image) {
       self.scans.unshift({ date: +(Date.now()), content: content });
-      
+
       console.log(content);
     });
     Instascan.Camera.getCameras().then(function (cameras) {
