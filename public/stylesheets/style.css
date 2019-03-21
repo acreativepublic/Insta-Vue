@@ -1,8 +1,113 @@
+
+
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  font-family: 'Work Sans', sans-serif;
+	text-transform: uppercase;
+   letter-spacing: 0.08em;
 }
 
-a {
-  color: #00B7FF;
+@media only screen and (min-width: 768px) and (orientation: landscape) {
+
+.form {
+
+  font-size: 24px;
+	text-align: center;
+}
+.header {
+	color: darkgrey;
+	font-size: 24px;
+	text-align: center;
+}
+.phoneheader {
+	display: none;
+}
+
+.cameras {
+color: darkgrey;
+font-size: 22px;
+}
+.nocamera {
+	font-size: 24px;
+}
+
+.scans {
+color: darkgrey;
+font-size: 22px;
+}
+
+.preview-container {
+	overflow: hidden;
+}
+.active1 {
+	color: green;
+	font-size: 24px;
+}
+.noscan {
+	color:orange;
+font-size: 24px;
+}
+
+.scansenter {
+  color: #e5e833;
+	background: darkgrey;
+	padding-top:10px;
+	padding-bottom: 10px;
+	font-size: 24px;
+	padding-left: 10px;
+}
+.btn {
+  @include user-select();
+  @include prefix(appearance, none, webkit moz spec);
+  display: inline-block;
+  width: auto;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  width: 300px;
+			margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 20px;
+  padding-bottom: 15px;
+			padding-left: 45px;
+			padding-right: 45px;
+			padding-top: 15px;
+  background-color:#607d8b;
+  color: white;
+  font-family: 'Work Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: normal;
+  font-size: 20px;
+  text-align: center;
+		}
+		.formtext {
+			margin-left: 10px; margin-right: 10px;
+		}
+		.phonescans {
+			display: none;
+		}
+	}
+
+		/* Extra small devices (phones, 600px and down) */
+		@media only screen and (max-width: 600px) {
+			@media only screen and (orientation: portrait) {
+			.phonescans {
+font-size: 16px;
+
+		}
+		.scans {
+			display: none;
+		}
+.phoneheader {
+font-size: 20px;
+text-align: center;
+}
+.header {
+	display: none;
+}
+}
 }

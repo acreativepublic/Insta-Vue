@@ -1,15 +1,22 @@
 body, html {
   padding: 0;
   margin: 0;
-  font-family: 'Helvetica Neue', 'Calibri', Arial, sans-serif;
+  text-transform: uppercase;
+  font-family: 'Work Sans', sans-serif;
+   letter-spacing: 0.08em;
   height: 100%;
+  width: 60%;
+  background: #eceff1;
+
 }
 #app {
-  background: #263238;
-  display: flex;
-  align-items: stretch;
+
+  display: block;
+  align-items: center;
   justify-content: stretch;
   height: 100%;
+  overflow: visible;
+
 }
 .btn {
   @include user-select();
@@ -22,35 +29,39 @@ body, html {
   cursor: pointer;
   border: 1px solid transparent;
   width: 200px;
-			margin-left: 20px;
-      margin-right: 20px;
+			margin-left: 10px;
+      margin-right: 10px;
       margin-top: 20px;
-  padding-bottom: 8px;
+  padding-bottom: 15px;
 			padding-left: 30px;
 			padding-right: 30px;
-			padding-top: 8px;
-  background-color:#5e6877;
+			padding-top: 15px;
+  background-color:#607d8b;
   color: white;
   font-family: 'Work Sans', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   white-space: normal;
-  font-size: 15px;
+  font-size: 14px;
+  text-align: center;
 		}
 .sidebar {
   background: #eceff1;
-  min-width: 250px;
+max-height: 20%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow: auto;
+  flex-direction: row;
+  justify-content: center;
+  overflow: visible;
+}
+.form1 {
+  text-align: center;
 }
 .sidebar h2 {
   font-weight: normal;
-  font-size: 1.0rem;
+  font-size: 14px;
   background: #607d8b;
   color: #fff;
-  padding: 10px;
+  padding: 15px;
   margin: 0;
 }
 .sidebar ul {
@@ -67,6 +78,7 @@ body, html {
 }
 .cameras ul {
   padding: 15px 20px;
+  font-size: 14px;
 }
 .cameras .active {
   font-weight: bold;
@@ -82,6 +94,7 @@ body, html {
 }
 .scans li {
   padding: 10px 20px;
+  font-size: 14px;
   border-bottom: 1px solid #ccc;
 }
 .scans-enter-active {
@@ -91,16 +104,23 @@ body, html {
   background: yellow;
 }
 .empty {
-  font-style: italic;
+  font-style: bold;
+}
+.preview-container .active {
+margin-top: 70px;
+padding-left: 100px;
+z-index: 4;
+
 }
 .preview-container {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  align-items: left;
+
   display: flex;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   transform: rotateY(180deg);
    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
    -moz-transform:rotateY(180deg); /* Firefox */
+   z-index: 2;
 }

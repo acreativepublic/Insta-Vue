@@ -3,9 +3,11 @@
   <head>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/scanstyle.css' />
+   <link rel='stylesheet' href='/stylesheets/scanstyle.css' />
     <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+  </head>
+  <body>
   <div id="app">
           <div class="sidebar">
             <section class="cameras">
@@ -19,6 +21,19 @@
                   </span>
                 </li>
               </ul>
+              <div v-for="scan in scans">
+              <form method="POST" :key="scan.date" :title="scan.content" id="myform" action="products/create">
+             <ul>
+                <input type="hidden"  name="qrcode" :value="scan.content"/>
+            </ul>
+             <ul>
+                <input type="hidden" id="cdate" name="date" value="datedowntowncode"/>
+              </ul>
+                <p style="margin-left: 10px; margin-right: 10px; font-size: 14px; "> Are you sure you'd like to mark this coupon as redeemed?</p>
+              <button type="submit" class="btn" v-if="scans.length != 0">Redeem coupon</button>
+
+              </form>
+</div>
             </section>
             <section class="scans" onchange="frack()" >
               <h2>Scans</h2>
@@ -28,28 +43,26 @@
               <transition-group name="scans" tag="ul">
                 <li v-for="scan in scans" id="codee" :key="scan.date" :title="scan.content">{{ scan.content }}</li>
               </transition-group>
-              <div v-for="scan in scans">
-              <form method="POST" :key="scan.date" :title="scan.content" id="myform" action="products/create">
 
-                <input type="hidden"  name="qrcode" :value="scan.content"/>
 
-                <input type="hidden" id="cdate" name="date" value="datedowntowncode"/>
-              <button type="submit" class="btn" v-if="scans.length != 0">Redeem coupon?</button>
-
-              </form>
-
-            </div>
 
 
             </section>
           </div>
+
+
+
           <div class="preview-container">
+          <!--  <h1 style="transform: rotateY(180deg);
+             -webkit-transform:rotateY(180deg);
+             -moz-transform:rotateY(180deg); font-size: 20px; color: white; font-family: 'Work Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;"> Date Downtown Scanner </h1> -->
             <video id="preview" playsinline ></video>
           </div>
         </div>
 
-  </head>
-  <body>
+
  </body>
 <script>
 

@@ -34,9 +34,7 @@ var number=document.getElementById("myform");
     });
   },
   methods: {
-    checkForm: function (e) {
-      document.getElementById("myForm").submit();
-    },
+    
     formatName: function (name) {
       return name || '(unknown)';
     },

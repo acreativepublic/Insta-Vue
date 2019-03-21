@@ -1,0 +1,76 @@
+<html>
+<head>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Date.io</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+  </head>
+  <body>
+<div id="app" class="app">
+<h1 class="header"> Date Downtown Scanner</h1>
+<h1 class="phoneheader"> Date Downtown Scanner</h1>
+
+<h2 class="cameras"> <u>cameras</u></h2>
+<ul>
+  <p class="nocamera" v-if="cameras.length === 0">No cameras found</p>
+  <p v-for="camera in cameras">
+    <span v-if="camera.id == activeCameraId" :title="formatName(camera.name)" class="active1">{{ formatName(camera.name) }}</span>
+    <span v-if="camera.id != activeCameraId" :title="formatName(camera.name)">
+      <a @click.stop="selectCamera(camera)">{{ formatName(camera.name) }}</a>
+    </span>
+  </p>
+</ul>
+<hr>
+
+<h2 class="scans"> <u>scans </u></h2>
+<h2 class="phonescans"> <u>scans </u></h2>
+
+<ul v-if="scans.length === 0">
+  <p class="noscan">No scans yet</p>
+</ul>
+
+    <p class="scansenter" v-for="scan in scans" id="codee" :key="scan.date" :title="scan.content">{{ scan.content }}</p>
+
+<hr>
+
+<div class="form" v-for="scan in scans">
+
+
+<form method="POST" :key="scan.date" :title="scan.content" id="myform" action="products/create">
+<ul>
+  <input type="hidden"  name="qrcode" :value="scan.content"/>
+</ul>
+<ul>
+  <input type="hidden" id="cdate" name="date" value="datedowntowncode"/>
+</ul>
+  <p class="formtext"> Are you sure you'd like to mark this coupon as redeemed?</p>
+<button type="submit" class="btn" v-if="scans.length != 0">Redeem coupon</button>
+
+</form>
+
+
+</div>
+
+<div class="preview-container">
+<!--  <h1 style="transform: rotateY(180deg);
+   -webkit-transform:rotateY(180deg);
+   -moz-transform:rotateY(180deg); font-size: 20px; color: white; font-family: 'Work Sans', sans-serif;
+text-transform: uppercase;
+letter-spacing: 0.08em;"> Date Downtown Scanner </h1> -->
+  <video id="preview" playsinline ></video>
+</div>
+
+
+</div>
+<script>
+
+var cdote = document.getElementById("cdate");
+var d = new Date();
+cdote.value = d;
+</script>
+ <script src="/bundled/visuals.js"></script>
+
+
+    </body>
+    </html>
