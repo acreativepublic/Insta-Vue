@@ -1,0 +1,103 @@
+<html>
+<head>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Date.io</title>
+
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+  </head>
+  <body>
+    <script>
+  document.documentElement.style.overflow = 'hidden';  // firefox, chrome
+   document.body.scroll = "no"; // ie only"
+   </script>
+<div id="app" class="app">
+<h1 class="header"> Date Downtown Scanner</h1>
+
+
+<!--<h2 class="cameras"> <u>cameras</u></h2>
+<ul>
+  <p class="nocamera" v-if="cameras.length === 0">No cameras found</p>
+  <p v-for="camera in cameras">
+    <span v-if="camera.id == activeCameraId" :title="formatName(camera.name)" class="active1">{{ formatName(camera.name) }}</span>
+    <span v-if="camera.id != activeCameraId" :title="formatName(camera.name)">
+      <a @click.stop="selectCamera(camera)">{{ formatName(camera.name) }}</a>
+    </span>
+  </p>
+</ul> -->
+<hr>
+
+
+  <% for(var i=0; i<datedowntowncodes.length; i++) {%>
+    <% if(datedowntowncodes[i].qrcode != null) {%>
+    <p  id="results" class="resultp">This code has already been scanned</p>
+    <% } %>
+
+
+  <span id="getcode" class="codespan" value="<%- datedowntowncodes[i].qrcode %>"> Code: <%- datedowntowncodes[i].qrcode %> </span>
+  <br>
+  <br>
+  <span id="getcoded" class="datespan" value="<%- datedowntowncodes[i].date %>"> This code was redeemed on <%- datedowntowncodes[i].date %> </span>
+
+  <% } %>
+<br>
+<br>
+<button onclick="goback()" class="btn">Return to scanner</button>
+
+<script>
+  function goback() {
+  window.history.back();
+}
+</script>
+
+
+
+    <p class="scansenter" v-for="scan in scans" id="codee" :key="scan.date" :title="scan.content"><b>{{ scan.content }}</b></p>
+
+
+
+<div class="form" v-for="scan in scans">
+
+
+
+
+
+
+
+<form method="GET" class="formform" :key="scan.date" :title="scan.content" id="myform" action="products/details">
+<ul>
+  <input type="hidden"  name="id" :value="scan.content"/>
+</ul>
+
+<button type="submit" style="display: block;" class="btn" v-if="scans.length != 0">check database</button>
+
+</form>
+
+
+</div>
+
+<form method="POST" class="formform"  title="scancontent" id="myform2" action="/scanner/products/create">
+  <input type="hidden" id="qrin" name="qrcode"/>
+  <input type="hidden" id="cdate" name="date" value="datedowntowncode"/>
+</form>
+
+<!--<div class="preview-container">
+ <h1 style="transform: rotateY(180deg);
+   -webkit-transform:rotateY(180deg);
+   -moz-transform:rotateY(180deg); font-size: 20px; color: white; font-family: 'Work Sans', sans-serif;
+text-transform: uppercase;
+letter-spacing: 0.08em;"> Date Downtown Scanner </h1>
+  <video id="preview" class="activepreview" playsinline ></video>
+</div>
+
+
+</div>
+-->
+
+
+ <script src="/bundled/visuals.js"></script>
+ <script src="/resultscript.js"></script>
+
+    </body>
+    </html>

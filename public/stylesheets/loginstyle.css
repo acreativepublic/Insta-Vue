@@ -1,0 +1,59 @@
+body {
+
+  font-family: 'Work Sans', sans-serif;
+	text-transform: uppercase;
+   letter-spacing: 0.08em;
+   background-color: #3a4259;
+   text-align: center;
+   text-decoration-color: #444444;
+}
+.btn {
+  @include user-select();
+  @include prefix(appearance, none, webkit moz spec);
+  display: inline-block;
+  width: auto;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  width: 80px;
+
+
+      margin-top: 20px;
+      margin-left: -225px;
+
+			padding-left: 15px;
+			padding-right: 15px;
+
+  background-color:#607d8b;
+  color: white;
+  font-family: 'Work Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: normal;
+  font-size: 14px;
+  text-align: center;
+		}
+    .header {
+      margin-top: 15px;
+
+      font-size: 24px;
+    }
+.loggy {
+  margin-top: 35px;
+  color: #ffffff;
+}
+.footer {
+  color: #ffffff;
+  margin-top: 45px;
+}
+.enter {
+  font-size: 16px;
+
+  margin-left: -15px;
+}
+.password {
+  text-align: left;
+  margin-left: -155px;
+}

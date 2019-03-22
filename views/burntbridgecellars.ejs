@@ -1,0 +1,158 @@
+<html>
+<head>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Date.io</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+  </head>
+  <body>
+    <script>
+  document.documentElement.style.overflow = 'hidden';  // firefox, chrome
+   document.body.scroll = "no"; // ie only"
+   </script>
+<div id="app" class="app">
+<h1 class="header" id="head1"> Date Downtown Scanner</h1>
+
+<div class="camerasdiv">
+<h2 class="cameras"> <u>cameras</u></h2>
+<ul>
+  <p class="nocamera" v-if="cameras.length === 0">No cameras found</p>
+  <p v-for="camera in cameras">
+    <span v-if="camera.id == activeCameraId" :title="formatName(camera.name)" class="active1">{{ formatName(camera.name) }}</span>
+    <span v-if="camera.id != activeCameraId" :title="formatName(camera.name)">
+      <a @click.stop="selectCamera(camera)">{{ formatName(camera.name) }}</a>
+    </span>
+  </p>
+</ul>
+<hr>
+</div>
+<h2 class="scans"><u>Code number</u></h2>
+
+
+
+<ul v-if="scans.length === 0">
+  <p class="noscan">No scans yet</p>
+</ul>
+
+  <b>  <p class="scansenter" v-for="scan in scans" id="codee" :key="scan.date" :title="scan.content">{{ scan.content }}</p></b>
+
+
+
+<div class="form" v-for="scan in scans">
+
+
+ <!--<form method="POST" class="formform" :key="scan.date" :title="scan.content" id="myform" action="products/create">
+<ul>
+  <input type="hidden"  name="qrcode" :value="scan.content"/>
+</ul>
+<ul>
+  <input type="hidden" id="cdate" name="date" value="datedowntowncode"/>
+</ul>
+  <p class="formtext"> Are you sure you'd like to mark this coupon as redeemed?</p>
+<button type="submit" class="btn" v-if="scans.length != 0">Redeem coupon</button>
+
+</form> -->
+
+<form method="GET" class="formform" onsubmit="formcl()" :key="scan.date" :title="scan.content" id="myform" action="products/details">
+  <ul>
+    <input type="hidden" id="cdate" name="date" value="datedowntowncode"/>
+  </ul>
+<ul>
+  <input type="hidden" id="scancont"  name="id" :value="scan.content"/>
+</ul>
+
+<button type="submit" style="display: block;" id="check" class="btn" v-if="scans.length != 0">redeem coupon</button>
+
+</form>
+<script v-if="scans.length != 0">
+
+var cdote = document.getElementById("cdate");
+var d = new Date();
+cdote.value = d;
+
+function partnerhead () {
+  var win1 = window.location.href;
+  console.log(win1);
+  if (win1 == "http://localhost:4000/scanner/koipondcellars") {
+  var kph1 = document.createElement('h2');
+  kph1.classList.add('scans2');
+  var kptn = document.createTextNode('Koi Pond Cellars');
+
+  var head = document.getElementById('head1');
+  kph1.appendChild(kptn);
+  head.appendChild(kph1);
+
+
+} else if (win1 == "http://localhost:4000/scanner/burntbridgecellars") {
+var kph1 = document.createElement('h2');
+kph1.classList.add('scans2');
+var kptn = document.createTextNode('Burnt Bridge Cellars');
+
+var head = document.getElementById('head1');
+kph1.appendChild(kptn);
+head.appendChild(kph1);
+
+
+} else if (win1 == "http://localhost:4000/scanner/jerusalemcafe") {
+var kph1 = document.createElement('h2');
+kph1.classList.add('scans2');
+var kptn = document.createTextNode('Jerusalem Cafe');
+
+var head = document.getElementById('head1');
+kph1.appendChild(kptn);
+head.appendChild(kph1);
+
+
+} else if (win1 == "http://localhost:4000/scanner/tommyos") {
+var kph1 = document.createElement('h2');
+kph1.classList.add('scans2');
+var kptn = document.createTextNode('TommyOs');
+
+var head = document.getElementById('head1');
+kph1.appendChild(kptn);
+head.appendChild(kph1);
+
+
+}
+};
+partnerhead();
+
+
+function formcl () {
+var scancontv = document.getElementById("codee").innerHTML;
+
+
+myStorage = window.localStorage;
+localStorage.setItem('key1', 't');
+localStorage["key1"] = scancontv;
+var thekey = localStorage.getItem('key1');
+console.log(thekey);
+
+};
+localStorage.setItem('key2', 'bbc');
+var thekey2 = localStorage.getItem('key2');
+console.log(thekey2);
+var thekey = localStorage.getItem('key1');
+console.log(thekey);
+</script>
+
+</div>
+
+<div class="preview-container">
+<!--  <h1 style="transform: rotateY(180deg);
+   -webkit-transform:rotateY(180deg);
+   -moz-transform:rotateY(180deg); font-size: 20px; color: white; font-family: 'Work Sans', sans-serif;
+text-transform: uppercase;
+letter-spacing: 0.08em;"> Date Downtown Scanner </h1> -->
+  <video id="preview" class="activepreview" playsinline ></video>
+</div>
+
+
+</div>
+
+ <script src="/bundled/visuals.js"></script>
+
+
+    </body>
+    </html>

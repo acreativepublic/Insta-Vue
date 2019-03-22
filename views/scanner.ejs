@@ -7,6 +7,10 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
   </head>
   <body>
+    <script>
+  document.documentElement.style.overflow = 'hidden';  // firefox, chrome
+   document.body.scroll = "no"; // ie only"
+   </script>
 <div id="app" class="app">
 <h1 class="header"> Date Downtown Scanner</h1>
 <h1 class="phoneheader"> Date Downtown Scanner</h1>
@@ -30,9 +34,9 @@
   <p class="noscan">No scans yet</p>
 </ul>
 
-    <p class="scansenter" v-for="scan in scans" id="codee" :key="scan.date" :title="scan.content">{{ scan.content }}</p>
+    <p class="scansenter" v-for="scan in scans" id="codee" :key="scan.date" :title="scan.content"><b>{{ scan.content }}</b></p>
 
-<hr>
+
 
 <div class="form" v-for="scan in scans">
 

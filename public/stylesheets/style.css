@@ -6,26 +6,72 @@ body {
   font-family: 'Work Sans', sans-serif;
 	text-transform: uppercase;
    letter-spacing: 0.08em;
+
 }
+/* Tablets and desktops */
+@media (min-width: 1025px) {
+  .camerasdiv {
+    max-width: 30%;
+  }
+  .resultp {
+    font-size: 34px;
+    color:red;
+  }
+  .scans2 {
+    font-size: 14px;
+  }
+  .codespan{
+font-size: 34px;
 
-@media only screen and (min-width: 768px) and (orientation: landscape) {
+  }
+  .datespan {
+font-size: 34px;
 
+  }
+	.rowtable {
+		align: center;
+		text-align: center;
+		width: 100%;
+	}
+	.preview-container {
+
+	  transform: rotateY(180deg);
+	   -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+	   -moz-transform:rotateY(180deg); /* Firefox */
+
+		 text-align: center;
+
+	}
+.activepreview {
+width: 600px;
+margin-top: -200px;
+margin-left: -150px;
+}
 .form {
 
   font-size: 24px;
 	text-align: center;
+	width: 30%;
+	background-color: #ffffff;
+	color: white;
 }
+/*.formform {
+	padding-top: 10px;
+}
+*/
 .header {
-	color: darkgrey;
-	font-size: 24px;
+	color: #444444;
+	font-size: 30px;
+	text-align: center;
+
+}
+.headerdiv {
 	text-align: center;
 }
-.phoneheader {
-	display: none;
-}
+
 
 .cameras {
-color: darkgrey;
+color: #444444;
 font-size: 22px;
 }
 .nocamera {
@@ -33,16 +79,16 @@ font-size: 22px;
 }
 
 .scans {
-color: darkgrey;
+color: #444444;
 font-size: 22px;
 }
 
-.preview-container {
-	overflow: hidden;
-}
+
+
 .active1 {
 	color: green;
 	font-size: 24px;
+	margin-left: -30px;
 }
 .noscan {
 	color:orange;
@@ -50,12 +96,13 @@ font-size: 24px;
 }
 
 .scansenter {
-  color: #e5e833;
+  color: #b7e7f7;
 	background: darkgrey;
 	padding-top:10px;
 	padding-bottom: 10px;
 	font-size: 24px;
 	padding-left: 10px;
+  max-width: 300px;
 }
 .btn {
   @include user-select();
@@ -66,11 +113,12 @@ font-size: 24px;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  border: 1px solid transparent;
+  border: 1px solid #ffffff;
   width: 300px;
 			margin-left: 10px;
       margin-right: 10px;
       margin-top: 20px;
+			margin-bottom: 20px;
   padding-bottom: 15px;
 			padding-left: 45px;
 			padding-right: 45px;
@@ -85,29 +133,188 @@ font-size: 24px;
   text-align: center;
 		}
 		.formtext {
-			margin-left: 10px; margin-right: 10px;
+			margin-left: 10px;
+			margin-right: 10px;
+			text-align: center;
+			font-size: 18px;
 		}
-		.phonescans {
-			display: none;
+
+	}
+/* Landscape Phones */
+	@media (min-width: 481px) and (max-width: 1024px){
+    .header {
+      text-align: center;
+    }
+    .resultp {
+
+      color:red;
+    }
+    .scans2 {
+      font-size: 14px;
+      text-align: center;
+    }
+		.cameras {
+		color: #444444;
+		font-size: 22px;
 		}
+
+		.scansenter {
+		  color: #e5e833;
+			background: darkgrey;
+			padding-top:10px;
+			padding-bottom: 10px;
+			font-size: 24px;
+			padding-left: 10px;
+		}
+		.form {
+
+		  font-size: 24px;
+			text-align: center;
+			background-color: #ffffff;
+			color: white;
+		}
+		.formtext {
+			margin-left: 10px;
+			margin-right: 10px;
+			text-align: center;
+		}
+
+	.active1 {
+		color: green;
+		font-size: 24px;
+	}
+	.noscan {
+		color:orange;
+	font-size: 24px;
 	}
 
-		/* Extra small devices (phones, 600px and down) */
-		@media only screen and (max-width: 600px) {
-			@media only screen and (orientation: portrait) {
-			.phonescans {
+
+	.preview-container {
+		text-align: center;
+	  transform: rotateY(180deg);
+	   -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+	   -moz-transform:rotateY(180deg); /* Firefox */
+
+	}
+	.btn {
+	  @include user-select();
+	  @include prefix(appearance, none, webkit moz spec);
+	  display: inline-block;
+	  width: auto;
+	  text-decoration: none;
+	  text-align: center;
+	  vertical-align: middle;
+	  cursor: pointer;
+	  border: 1px solid transparent;
+	  width: 300px;
+				margin-left: 10px;
+	      margin-right: 10px;
+	      margin-top: 20px;
+	  padding-bottom: 15px;
+				padding-left: 45px;
+				padding-right: 45px;
+				padding-top: 15px;
+	  background-color:#607d8b;
+	  color: white;
+	  font-family: 'Work Sans', sans-serif;
+	  text-transform: uppercase;
+	  letter-spacing: 0.08em;
+	  white-space: normal;
+	  font-size: 20px;
+	  text-align: center;
+			margin-bottom: 20px;
+			}
+	}
+
+		/* Phones */
+		@media (max-width: 480px) and (orientation: portrait){
+      .resultp {
+
+        color:red;
+      }
+      .scans2 {
+        font-size: 14px;
+      }
+			.form {
+
+			  font-size: 17px;
+				text-align: center;
+				background-color: #ffffff;
+				color: white;
+			}
+
+			.scansenter {
+			  color: #e5e833;
+				background: darkgrey;
+				padding-top:10px;
+				padding-bottom: 10px;
+				font-size: 18px;
+				padding-left: 10px;
+			}
+			.cameras {
+			color: #444444;
+			font-size: 16px;
+			}
+			.active1 {
+				color: green;
+				font-size: 14px;
+			}
+			.noscan {
+				color:orange;
+			font-size: 14px;
+			}
+			.formtext {
+				margin-left: 10px;
+				margin-right: 10px;
+				text-align: center;
+			}
+
+		.scans {
+			color: #444444;
 font-size: 16px;
 
 		}
-		.scans {
-			display: none;
-		}
-.phoneheader {
-font-size: 20px;
-text-align: center;
+
+.headerdiv {
+	text-align: center;
 }
 .header {
-	display: none;
+	font-size: 20px;
+	text-align: center;
 }
+.preview-container {
+	text-align: center;
+	transform: rotateY(180deg);
+	 -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+	 -moz-transform:rotateY(180deg); /* Firefox */
+
 }
+.btn {
+  @include user-select();
+  @include prefix(appearance, none, webkit moz spec);
+  display: inline-block;
+  width: auto;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  width: 240px;
+			margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 10px;
+  padding-bottom: 5px;
+	margin-bottom: 10px;
+			padding-left: 30px;
+			padding-right: 30px;
+			padding-top: 5px;
+  background-color:#607d8b;
+  color: white;
+  font-family: 'Work Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: normal;
+  font-size: 17px;
+  text-align: center;
+		}
 }

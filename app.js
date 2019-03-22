@@ -44,10 +44,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const product = require('./routes/product.route');
+var product = require('./routes/product.route');
 
-app.use('/products', product);
+app.use('/scanner/products', product);
 app.use('/', indexRouter);
+app.use('/scanner', product);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

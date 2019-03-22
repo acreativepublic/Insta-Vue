@@ -1,0 +1,32 @@
+<html>
+<head>
+
+  </head>
+  <body onload="partnerhead()">
+    <script>
+      function partnerhead () {
+
+        var win1 = localStorage.getItem('key2');
+        console.log(win1);
+        if (win1 == "koip") {
+         window.location.replace('/scanner/koipondcellars')
+
+
+      } else if (win1 == "bbc") {
+  window.location.replace('/scanner/burntbridgecellars')
+
+
+} else if (win1 == "jcafe") {
+
+  window.location.replace('/scanner/jerusalemcafe')
+
+} else if (win1 == "tom") {
+      window.location.replace('/scanner/tommyos')
+
+
+      }
+      };
+      partnerhead();
+      </script>
+    </body>
+    </html>

@@ -12,5 +12,8 @@ productrouter.use('/create', product_controller.product_create);
 
 productrouter.post('/quotes', product_controller.quotes);
 
+productrouter.get('/:id', product_controller.product_details);
+
+
 
 module.exports = productrouter;
